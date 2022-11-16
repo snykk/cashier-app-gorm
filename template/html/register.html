@@ -1,0 +1,59 @@
+{{define "register"}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/static/assets/icons/favicon.ico" />
+    <title>Cashier App | Register Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <link rel="stylesheet" href="/static/css/form.css" />
+  </head>
+  <body>
+    <h2>Register Form</h2>
+
+    <div class="form">
+      <div class="imgcontainer">
+        <img
+          src="https://i.pinimg.com/736x/02/8f/92/028f927e250647bcc81a6f7d4e4a43e6.jpg"
+          alt="Avatar"
+          class="avatar"
+        />
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="uname"
+          id="username"
+          required
+        />
+
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          id="password"
+          required
+        />
+
+        <button type="submit" onclick="registerAction()">Register</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember" /> Rememberme
+        </label>
+      </div>
+
+      <div class="container" style="background-color: #f1f1f1">
+        <span class="psw"
+          >You have an Account? <a href="/page/login">Go to Login</a></span
+        >
+      </div>
+    </div>
+
+    <script src="/static/js/auth.js"></script>
+  </body>
+</html>
+{{end}}

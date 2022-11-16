@@ -1,0 +1,112 @@
+{{define "dashboard"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cashier App | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/css/dashboard.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+  </head>
+  <body>
+    <div id="app" class="wrapper flex content-center sm:max-w-screen-xl mx-auto">
+      <div class="sidebar fixed px-2 pl-5 py-3">
+        <div class="store text-blue-800 font-medium px-1 py-2 mb-3">
+          <ul class="flex">
+            <li class="inline-block">
+              <img class="h-8 rounded-full shadow" src="https://i.pinimg.com/736x/02/8f/92/028f927e250647bcc81a6f7d4e4a43e6.jpg" alt="" />
+            </li>
+            <li class="inline-block">&nbsp;&nbsp;&nbsp;Easy Store</li>
+          </ul>
+        </div>
+        <nav class="pt-3">
+          <p class="title uppercase text-xs text-gray-600 tracking-wider">main</p>
+          <ul class="ml-2 mt-2">
+            <li class="flex-grow px-2 py-1">
+              <a class="text-sm tracking-wide text-blue-900 hover:text-blue-700 active" href="#"> <i class="fa fa-home"></i> Home </a>
+            </li>
+            <li class="flex-grow px-2 py-1">
+              <a class="text-sm font-light text-blue-900 hover:text-blue-700" href="#"> <i class="fa fa-desktop"></i> Dashboard </a>
+            </li>
+            <li class="flex-grow px-2 py-1">
+              <a class="text-sm font-light text-blue-900 hover:text-blue-700" href="#"> <i class="fa fa-cog"></i> Settings </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <section class="main container box-border relative w-full">
+        <nav class="top-nav sticky inset-0 box-border inline-flex flex-grow w-full h-auto py-1 overflow-hidden">
+          <div class="top-nav-left flex flex-grow items-start">
+            <div class="inline-flex self-center">
+              <input class="search content-center shadow rounded-l" type="text" placeholder="Search Product" />
+              <button class="btn"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+          <div class="top-nav-right">
+            <ul class="flex justify-end items-center">
+              <li class="inline-block">
+                <p class="text-gray-700" id="username"><i class="fa fa-sign-in"></i> Username Undefined</p>
+              </li>
+              <li class="inline-block">
+                <button data-toggle="modal" data-target="#bootstrapModal" onclick="modalChangeProfile()">
+                  <img class="h-8 rounded-full shadow" src="/user/img/profile" alt="" />
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <content class="main box-border my-10 flex">
+          <div class="card my-2 w-7/12">
+            <div class="card-header p-5 border-b">
+              <h2 class="text-xl text-gray-700 font-medium tracking-wide">Products</h2>
+            </div>
+            <div class="card-content p-5">
+              <div class="grid grid-cols-3 gap-4 text-center" id="product-body"></div>
+            </div>
+            <button class="btn" data-toggle="modal" data-target="#bootstrapModal" onclick="modalAddProduct()"><i class="fa fa-plus"></i> Add Product</button>
+            <div class="card-footer border-t p-5">
+              <a class="inline-block" href="#"><i class="fa fa-star"></i> Favorite</a>
+              <a class="inline-block" href="#"><i class="fa fa-cutlery"></i> Foods</a>
+              <a class="inline-block" href="#"><i class="fa fa-coffee"></i> Favorite</a>
+            </div>
+          </div>
+          <div class="card my-2 bg-white shadow-lg rounded w-5/12 ml-3">
+            <div class="card-header p-5 border-b">
+              <h2 class="text-xl text-gray-700 font-medium tracking-wide">Cart</h2>
+            </div>
+            <div class="card-content p-5">
+              <div class="grid grid-cols-3 gap-4 text-center" id="cart-body"></div>
+            </div>
+
+            <button class="btn" id="pay-button" data-toggle="modal" data-target="#bootstrapModal" onclick="modalPay()"><i class="fa fa-credit-card-alt"></i> Pay</button>
+          </div>
+        </content>
+      </section>
+    </div>
+
+    <div class="modal fade" id="bootstrapModal" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-label">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modal-body"></div>
+          <div class="modal-footer" id="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+  </body>
+</html>
+{{end}}
